@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.env/
+
+# Environment Variables (CRITICAL: Never commit API keys!)
+.env
+
+# Streamlit config (optional)
+.streamlit/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Additional files as requested
+README_ADDENDUM.md
+test_queries_and_outputs.md
+explanation.md
+requirements.txt
