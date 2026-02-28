@@ -27,11 +27,6 @@ st.markdown("""
 <style>
     /* Base adjustments for smaller screens */
     @media (max-width: 768px) {
-        /* Make chat avatars scale better */
-        .stChatMessage {
-            padding: 1rem !important;
-        }
-        
         /* Adjust title size for mobile */
         h1 {
             font-size: 1.8rem !important;
@@ -40,13 +35,6 @@ st.markdown("""
         /* Ensure inputs take full width and sit above the mobile browser bar */
         .stChatInputContainer {
             padding-bottom: 5rem !important;
-        }
-        
-        /* Add minimal padding to main content block to avoid touching edges */
-        .block-container {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-            padding-top: 2rem !important;
         }
     }
     
