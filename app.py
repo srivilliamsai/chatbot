@@ -37,18 +37,12 @@ st.markdown("""
             font-size: 1.8rem !important;
         }
         
-        /* Ensure inputs take full width without horizontal scroll */
+        /* Ensure inputs take full width and sit above the mobile browser bar */
         .stChatInputContainer {
-            padding-bottom: 2rem !important;
+            padding-bottom: 5rem !important;
         }
         
-        /* Sidebar optimizations for mobile view */
-        [data-testid="stSidebar"] {
-            min-width: 100% !important;
-            max-width: 100% !important;
-        }
-        
-        /* Add some padding to main content block to avoid touching edges */
+        /* Add minimal padding to main content block to avoid touching edges */
         .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
