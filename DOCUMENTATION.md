@@ -63,7 +63,7 @@
 │                                                                 │
 │  Routes to selected model:                                      │
 │  ┌─────────────────┐  ┌───────────────┐  ┌──────────────────┐   │
-│  │ Gemini 2.5 Flash│  │  DeepSeek V3  │  │ Llama 4 Maverick │   │
+│  │ Gemini 2.5 Flash│  │ Qwen 2.5 (7B) │  │   Gemma 2 (9B)   │   │
 │  └─────────────────┘  └───────────────┘  └──────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -313,8 +313,8 @@ The application communicates with OpenRouter's OpenAI-compatible API.
 | Display Name | Model ID | Provider | Cost |
 |-------------|----------|----------|------|
 | Gemini 2.5 Flash | `google/gemini-2.5-flash` | Google | Free |
-| DeepSeek V3 | `deepseek/deepseek-chat-v3-0324:free` | DeepSeek | Free |
-| Llama 4 Maverick | `meta-llama/llama-4-maverick:free` | Meta | Free |
+| Qwen 2.5 (7B) | `qwen/qwen-2.5-7b-instruct:free` | Alibaba | Free |
+| Gemma 2 (9B) | `google/gemma-2-9b-it:free` | Google | Free |
 
 ### 4.3 Internal Function API
 
