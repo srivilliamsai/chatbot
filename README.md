@@ -4,10 +4,38 @@ A domain-focused AI assistant built with OpenRouter, LangChain, and Streamlit. I
 
 ---
 
+## 1. Chosen Vertical
+**Vertical:** Software Engineering & Computer Science
+
+This assistant is strictly bounded to the domain of software engineering. It acts as an expert Software Engineer and Architect, capable of answering questions related to programming languages, system architecture, debugging, version control (Git), and data structures/algorithms.
+
+## 2. Approach and Logic
+The core logic of the assistant is driven by a highly constrained System Prompt mapped to a LangChain pipeline, which sets explicit behavioral boundaries:
+
+- **Strict Domain Filtering:** The prompt explicitly instructs the LLM to identify out-of-domain queries (e.g., medical advice, recipes, financial guidance). If a query falls outside the Software Engineering vertical, the LLM refuses to answer and redirects the user with a standardized message.
+- **Structured Output Strategy:** For complex questions, the LLM is prompted to return answers strictly in a structured format: `Analysis -> Solution -> Best Practices -> Disclaimer`. This guarantees professional, consistent readability.
+- **Modular Extensibility:** Instead of hardcoding API calls, the logic uses `LangChain Expression Language (LCEL)`. The pipeline (`prompt | llm | parser`) cleanly separates the prompt engineering from the model invocation.
+- **Model Agnosticism:** By utilizing OpenRouter's API, the system seamlessly routes queries to different foundational models (e.g., Gemini, Qwen, Gemma) allowing for easy comparison without changing the underlying code.
+
+## 3. How the Solution Works
+1. **Input Stage:** The user submits a query through the Streamlit web interface.
+2. **Validation:** `utils.py` validates the input to ensure it meets length requirements and isn't empty.
+3. **Context Assembly:** The input is passed to the LangChain `ChatPromptTemplate`, which merges the user's query with the strict `SYSTEM_PROMPT` (defined in `config.py`) and up to 20 messages of prior `chat_history`.
+4. **Execution:** The initialized LLM (`ChatOpenAI` configured for OpenRouter) connects to the selected external model and processes the assembled context.
+5. **Output Stage:** The response string is parsed, rendered as Markdown on the Apple-style dark theme UI, and automatically appended to the Streamlit session state history.
+
+## 4. Assumptions Made
+- **API Availability:** Assumes that the OpenRouter API endpoints and selected free-tier models remain active and stable.
+- **Context Limits:** Assumes that maintaining a rolling history of the last 20 messages is sufficient for continuous conversation flow without exceeding standard token window limits.
+- **User Intent:** Assumes the user interacts in English and expects technical output formatted in Markdown, complete with syntax-highlighted code blocks.
+- **Local Environment:** Assumes the host environment supports Python 3.9+ and can run local Streamlit servers without port binding conflicts on port `8501`.
+
+---
+
 ## Features
 
 - **Domain-specific intelligence** — answers only software engineering queries
-- **Multiple model support** — switch between Gemini, DeepSeek, and Llama models
+- **Multiple model support** — switch between Gemini, Qwen, and Gemma models
 - **Clean Apple-style UI** — dark theme, Inter font, minimal layout
 - **Structured responses** — Analysis, Solution, Best Practices, Disclaimer
 - **Chat export** — download conversation as Markdown
